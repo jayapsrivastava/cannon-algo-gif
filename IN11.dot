@@ -1,0 +1,90 @@
+digraph G {
+ // splines="line";
+  node [shape=circle,
+      fixedsize=true, # don't allow nodes to change sizes dynamically
+      width=0.7, nodesep = 0.5, ranksep = 0.5];  
+  subgraph cluster_0 {
+    nodesep = 0.5;
+    //node[ shape = square ];
+    edge[dir="back"];//, style=invis];
+    a[label = <A<SUB>11</SUB>>];
+    b[label = <A<SUB>12</SUB>>];
+    c[label = <A<SUB>13</SUB>>];
+    d[label = <A<SUB>21</SUB>>];
+//    e[label = <A<SUB>22</SUB>>];
+//    f[label = <A<SUB>23</SUB>>];
+//    g[label = <A<SUB>31</SUB>>];
+//    h[label = <A<SUB>32</SUB>>];
+    i[label = <A<SUB>33</SUB>>];
+    label = "Shift each row i by i columns to the left of [A]";
+
+    d[label = <A<SUB>22</SUB>>];
+    f[label = <A<SUB>21</SUB>>];
+    e[label = <A<SUB>23</SUB>>];
+    g[label = < <S>A<SUB>31</SUB></S>>];  
+    h[label = <A<SUB>31</SUB>>, color = green];
+
+    a -> b;
+    b -> c;
+    a -> d[style=invis];
+    c -> f[style=invis];
+    f -> d[style=invis];
+    d -> e[label = " "];
+    e -> f;
+    d -> g[style=invis];
+    
+    g -> h[color = red];
+    h -> i;
+    f -> i[style=invis];
+    i -> g[color = red, xlabel = < <FONT COLOR="red">replace A<SUB>33</SUB> by A<SUB>32</SUB></FONT>>];
+
+    {rank = same; a;b;c}
+    {rank = same; d;e;f}
+    {rank = same; g;h;i}
+  }
+  
+  subgraph cluster_1 {
+    nodesep = 0.5;
+    edge [dir="back"];
+    a1[label = <B<SUB>11</SUB>>];
+    b1[label = <B<SUB>12</SUB>>];
+    c1[label = <B<SUB>13</SUB>>];
+    d1[label = <B<SUB>21</SUB>>];
+//    e1[label = <B<SUB>22</SUB>>];
+//    f1[label = <B<SUB>23</SUB>>];
+    g1[label = <B<SUB>31</SUB>>];
+//    h1[label = <B<SUB>32</SUB>>];
+    i1[label = <B<SUB>33</SUB>>];
+    label = "Shift each row i by i columns to the left of [B]"
+
+    b1[label = <B<SUB>22</SUB>>];
+    h1[label = <B<SUB>12</SUB>>];
+    e1[label = <B<SUB>32</SUB>>];
+    c1[label = < <S>B<SUB>13</SUB></S>>];
+    f1[label = <B<SUB>13</SUB>>, color = green]
+    
+    c1 -> f1[color = red];
+    f1 -> i1;
+    b1 -> e1[label = " "];
+    e1 -> h1;
+    h1 -> b1[style=invis];
+
+    a1 -> b1[style=invis];
+    b1 -> c1[style=invis];
+    a1 -> d1;
+    d1 -> e1[style=invis];
+    e1 -> f1[style=invis];
+    d1 -> g1;
+    g1 -> h1[style=invis];
+    h1 -> i1[style=invis];
+    i1 -> c1[color = red, label = < <FONT COLOR="red">replace <br/>B<SUB>33</SUB> by B<SUB>23</SUB></FONT>>];
+    
+    {rank = same; a1;b1;c1}
+    {rank = same; d1;e1;f1}
+    {rank = same; g1;h1;i1}
+  }
+  
+} 
+
+
+

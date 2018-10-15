@@ -1,0 +1,29 @@
+digraph G {
+  splines="line";
+//  nodesep = 0.5;
+  a[label = <A<SUB>11</SUB>>];
+  b[label = <A<SUB>12</SUB>>];
+  c[label = <A<SUB>13</SUB>>];
+  d[label = <A<SUB>23</SUB>>];
+  e[label = <A<SUB>22</SUB>>];
+  f[label = <A<SUB>21</SUB>>];
+  g[label = <A<SUB>31</SUB>>];
+  h[label = <A<SUB>32</SUB>>];
+  i[label = <A<SUB>33</SUB>>];
+
+  a -> b;
+  b -> c;
+  c -> d;
+  d -> e[constraint = false];
+  e -> f[constraint = false];
+//  f -> d;
+  f -> a;
+  d -> i;
+  i -> h[constraint = false];
+  h -> g[constraint = false];
+  g -> f;
+  //g -> i;
+  {rank = same; a;b;c}
+  {rank = same; d;e;f}
+  {rank = same; i;h;g}
+}
